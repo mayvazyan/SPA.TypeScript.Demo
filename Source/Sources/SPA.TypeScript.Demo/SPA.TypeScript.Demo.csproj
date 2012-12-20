@@ -136,27 +136,15 @@
     <Content Include="App\AppConfig.js">
       <DependentUpon>AppConfig.ts</DependentUpon>
     </Content>
-    <Content Include="App\AppConfig.min.js">
-      <DependentUpon>AppConfig.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="App\Bootstrapper.ts" />
     <Content Include="App\Bootstrapper.js">
-      <DependentUpon>Bootstrapper.ts</DependentUpon>
-    </Content>
-    <Content Include="App\Bootstrapper.min.js">
       <DependentUpon>Bootstrapper.ts</DependentUpon>
     </Content>
     <Content Include="App\ViewModels\ExampleViewModel.js">
       <DependentUpon>ExampleViewModel.ts</DependentUpon>
     </Content>
-    <Content Include="App\ViewModels\ExampleViewModel.min.js">
-      <DependentUpon>ExampleViewModel.ts</DependentUpon>
-    </Content>
     <TypeScriptCompile Include="App\ViewModels\GridExampleViewModel.ts" />
     <Content Include="App\ViewModels\GridExampleViewModel.js">
-      <DependentUpon>GridExampleViewModel.ts</DependentUpon>
-    </Content>
-    <Content Include="App\ViewModels\GridExampleViewModel.min.js">
       <DependentUpon>GridExampleViewModel.ts</DependentUpon>
     </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -302,17 +290,17 @@
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
+       
+       
   <Target Name="BeforeBuild">
+    <Message Text="Compiling TypeScript files" />
+    <Message Text="Executing tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
+    <Exec Command="tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptSourceMap> --module AMD</TypeScriptSourceMap>
   </PropertyGroup>
-  <Target Name="BeforeBuild">
-    <Message Text="Compiling TypeScript files" />
-    <Message Text="Executing tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
-    <Exec Command="tsc$(TypeScriptSourceMap) @(TypeScriptCompile ->'&quot;%(fullpath)&quot;', ' ')" />
-  </Target>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>
